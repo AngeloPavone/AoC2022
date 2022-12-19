@@ -31,8 +31,12 @@ def count_semi_contained_pairs():
             start1, end1 = int(start1), int(end1)
             start2, end2 = int(start2), int(end2)
 
-            if start1 <= start2 or end1 >= end2 or start2 <= start1 or end2 >= end1:
-                count += 1
+
+            if start1 <= start2 and end1 >= end2 or start2 <= start1 and end2 >= end1:
+                count +=1
+            elif start1 <= start2 and start2 <= end1 and end1 <= end2 and start1 <= end1 or start2 <= end2 and start2 <= start1 and start1 <= end2 and end2 <= end1:
+                count +=1
+
 
 
     return count

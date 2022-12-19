@@ -2,9 +2,9 @@
 
 def count_fully_contained_pairs():
     with open('input', 'r') as f:
-        count = 0
         lines = f.readlines()
 
+        count = 0
         for pair in lines:
             range1, range2 = pair.split(',')
             start1, end1 = range1.split('-')

@@ -20,14 +20,14 @@ nine    = ['j','b','w','v','p']
 
 
 stacks = {
-    1 : 'one', 
-    2 : 'two', 
-    3 : 'three', 
-    4 : 'four', 
-    5 : 'five', 
-    6 : 'six', 
-    7 : 'seven', 
-    8 : 'eight', 
+    1 : 'one',
+    2 : 'two',
+    3 : 'three',
+    4 : 'four',
+    5 : 'five',
+    6 : 'six',
+    7 : 'seven',
+    8 : 'eight',
     9 : 'nine'
 }
 
@@ -56,7 +56,7 @@ def parse_input():
     instructions = []
     for instruction in lines:
         instruction = re.split('move | from | to |\n', instruction)
-        while '' in instruction: 
+        while '' in instruction:
             instruction.remove('')
         instructions.append([eval(i) for i in instruction])
 

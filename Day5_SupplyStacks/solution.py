@@ -1,6 +1,9 @@
 import re
 
 
+SHOW_ANSWER_FOR_PART2 = True
+
+
 # TODO: add input array parsing i kinda cheated by putting it in manually
 all_stacks = [
     ['r','g','j','b','t','v','z'],
@@ -23,22 +26,43 @@ test_stacks = [
 ]
 
 
+if SHOW_ANSWER_FOR_PART2 == True:
+    def move_containers(instructions):
+        try:
+            for instruction in instructions:
+                num_of_crates = instruction[0]
+                start = all_stacks[instruction[1]-1]
+                end = all_stacks[instruction[2]-1]
 
-def move_containers(instructions):
-    try: 
-        for instruction in instructions:
-            num_of_crates = instruction[0]
-            start = all_stacks[instruction[1]-1]
-            end = all_stacks[instruction[2]-1]
-        
-            count = 0
-            while count < num_of_crates:
-                current_crate = start.pop()
-                end.append(current_crate)
-                count += 1
-    except Exception as e: print(e)
+                count = 0
+                buffer = []
+                while count < num_of_crates:
+                    current_crate = start.pop()
+                    buffer.insert(0, current_crate)
+                    count += 1
+                end.extend(buffer)
+        except Exception as e: print(e)
 
-    return all_stacks
+        return all_stacks
+
+
+elif SHOW_ANSWER_FOR_PART2 == False:
+    def move_containers(instructions):
+        try:
+            for instruction in instructions:
+                num_of_crates = instruction[0]
+                start = all_stacks[instruction[1]-1]
+                end = all_stacks[instruction[2]-1]
+
+                count = 0
+                buffer = []
+                while count < num_of_crates:
+                    current_crate = start.pop()
+                    end.append(current_crate)
+                    count += 1
+        except Exception as e: print(e)
+
+        return all_stacks
 
 
 def parse_input():
@@ -49,7 +73,7 @@ def parse_input():
     instructions = []
     for instruction in lines:
         instruction = re.split('move | from | to |\n', instruction)
-        while '' in instruction: 
+        while '' in instruction:
             instruction.remove('')
         instructions.append([eval(i) for i in instruction])
 
@@ -57,5 +81,8 @@ def parse_input():
 
 if __name__ == '__main__':
     stacks = move_containers(parse_input())
-    for entry in stacks:
-        print(entry[-1], end='')
+    try:
+        for entry in stacks:
+            print(entry[-1], end='')
+    except:
+        pass

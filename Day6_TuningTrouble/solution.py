@@ -1,15 +1,13 @@
 
+def get_input():
+    input = []
+    with open('test_input', 'r') as f:
+        for line in f:
+            input.append(line)
+    return input
 
-with open('test_input', 'r') as f:
-    input = f.readlines()
-    # print(input)
-
-    for char in range(4, len(input), 1):
-        print(char)
-
-
-
+def parse_input(input):
+    pass
 
 if __name__ == "__main__":
-
-    pass
+    parse_input(get_input())

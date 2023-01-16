@@ -41,7 +41,6 @@ def parse_input(lines: list):
                 if lines[next_command].startswith('$'):
                     break
                 print(lines[next_command])
-            print()
 
     return head
 
